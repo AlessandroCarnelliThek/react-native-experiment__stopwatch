@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { Dimensions, Text, View, Pressable, ScrollView } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { Animated, Dimensions, Text, View, Pressable, ScrollView } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('screen').width
 
@@ -9,7 +9,7 @@ const COLOR_WHITE = '#ddd'
 
 export default function App() {
 
-  const [millis, setMillis] = useState(0)
+  const [tenths, setTenths] = useState(0)
   const [seconds, setSeconds] = useState(0)
   const [minutes, setMinutes] = useState(0)
 
@@ -27,7 +27,7 @@ export default function App() {
     setIsStart(false)
 
     let timer = setTimeout(() => {
-      setMillis(0)
+      setTenths(0)
       setSeconds(0)
       setMinutes(0)
       setLaps([])
@@ -38,7 +38,7 @@ export default function App() {
     return () => clearTimeout(timer)
   }
   //---------------
-  const togglePlayPause = () => {
+  const handle_PlayPause = () => {
 
     setIsStart(isStart => !isStart)
     console.log(isStart ? '::::PAUSE' : '::::PLAY')
@@ -52,7 +52,7 @@ export default function App() {
         ...laps,
         {
           id: index,
-          time: `#${(index + 1)}:  ${(minutes < 10) ? '0' + minutes : minutes}:${(seconds < 10) ? '0' + seconds : seconds},${millis}`
+          time: `#${(index + 1)}:  ${(minutes < 10) ? '0' + minutes : minutes}:${(seconds < 10) ? '0' + seconds : seconds},${tenths}`
         }
       ])
 
@@ -65,9 +65,9 @@ export default function App() {
     if (isStart) {
       interval = setInterval(() => {
 
-        if (millis >= 9) {
+        if (tenths >= 9) {
 
-          setMillis(0)
+          setTenths(0)
           setSeconds(seconds => seconds + 1)
           if (seconds >= 59) {
 
@@ -77,13 +77,13 @@ export default function App() {
 
           }
         } else {
-          setMillis(millis => millis + 1)
+          setTenths(tenths => tenths + 1)
         }
         return () => clearInterval(interval)
       }, 100)
     }
     return () => clearInterval(interval)
-  }, [isStart, millis, seconds])
+  }, [isStart, tenths, seconds])
   //:::::::::::::::
   useEffect(() => { // SCROLL
     if (isStart) {
@@ -98,36 +98,16 @@ export default function App() {
       { width: SCREEN_WIDTH, flex: 1 },
       { justifyContent: 'flex-start', alignItems: 'center' },
       { backgroundColor: COLOR_BLUE },
-      { paddingVertical: 30 }
-
     ]}>
-
-      {/* TITLE___________________________________________________________________________ */}
-      <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 40 }} >STOPWATCH</Text>
-
-
-      {/* CLOCK___________________________________________________________________________ */}
-      <View style={[
-        { width: SCREEN_WIDTH },
-        // { backgroundColor: 'pink' },
-        { justifyContent: 'center', alignItems: 'center' },
-        { flexDirection: 'row', paddingBottom: 30 }
-      ]}>
-
-        <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 30 }}
-        >{`${(minutes < 10) ? '0' + minutes : minutes} : `}</Text>
-
-        <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 80 }}
-        >{`${(seconds < 10) ? '0' + seconds : seconds}`}</Text>
-
-        <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 30 }}
-        >{` : ${millis}`}</Text>
-
-      </View>
 
 
       {/* LAP_VIEW________________________________________________________________________ */}
-      <ScrollView ref={(ref) => setFlatListRef(ref)}>
+      <ScrollView ref={(ref) => setFlatListRef(ref)}
+        contentContainerStyle={[
+          { justifyContent: 'flex-end', alignItems: 'center', },
+          { flexGrow: 1 }
+        ]}>
+
         {
           laps.map((item, index) => {
             return (
@@ -157,23 +137,22 @@ export default function App() {
         { width: SCREEN_WIDTH },
         { justifyContent: 'space-evenly', alignItems: 'center' },
         { flexDirection: 'row' },
-        { paddingTop: 30 }
+        { paddingVertical: 30 }
       ]} >
 
         <Pressable
-          onPress={() => handle_RESET()}
+          onPress={() => (isStart || tenths != 0 || seconds != 0 || minutes != 0) ? handle_RESET() : null}
           style={[
             { width: 75, height: 75 },
             { justifyContent: 'center', alignItems: 'center' },
-            { backgroundColor: (isStart || millis != 0) ? COLOR_WHITE : COLOR_BLUE, borderRadius: 75 }
-
+            { backgroundColor: (isStart || tenths != 0 || seconds != 0 || minutes != 0) ? COLOR_WHITE : COLOR_BLUE, borderRadius: 75 }
           ]} >
 
           <Text style={{ color: COLOR_BLUE, fontWeight: 'bold', fontSize: 20 }}>reset</Text>
         </Pressable>
 
         <Pressable
-          onPress={() => togglePlayPause()}
+          onPress={() => handle_PlayPause()}
           style={[
             { width: 75, height: 75 },
             { justifyContent: 'center', alignItems: 'center' },
@@ -197,8 +176,38 @@ export default function App() {
       </View>
 
 
-      <StatusBar style="auto" />
+      {/* CLOCK___________________________________________________________________________ */}
+      <View style={[
+        { width: SCREEN_WIDTH },
+        { backgroundColor: '#154360dd' },
+        { position: 'absolute', top: 0, left: 0, right: 0 },
+        { justifyContent: 'center', alignItems: 'center' },
+        { paddingVertical: 34 }
+      ]}>
+
+        <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 40 }} >S T O P W A T C H</Text>
+
+        <View style={[
+          { width: SCREEN_WIDTH },
+          { justifyContent: 'center', alignItems: 'center' },
+          { flexDirection: 'row' }
+        ]}>
+
+          <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 30 }}
+          >{`${(minutes < 10) ? '0' + minutes : minutes} : `}</Text>
+
+          <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 80 }}
+          >{`${(seconds < 10) ? '0' + seconds : seconds}`}</Text>
+
+          <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 30 }}
+          >{` : ${tenths}`}</Text>
+
+        </View>
+      </View>
+
+
+      <StatusBar style='inverted' />
     </View >
-  );
+  )
 }
 
