@@ -1,213 +1,199 @@
+/*                           `/sdNNNNmho-                             
+                           `sNdo-`  `./yNd:                           
+                          -mm/          .yMo                          
+                         `dN-             yM/                         
+                         -Mh              -Mh                         
+                         .Md   --------.  :My                         
+                          hM+  dNNNNNNNs `dN-                         
+                          `sNs-:+MMMMy/-/mm:                          
+             .`             -ymhoMMMMysmmo.            :.             
+          ./hNd.              ./sMMMMd+:`            `sNNh+.          
+         /mMMMMm-       `.-/+osydMMMMmhso+/-.`      `hMMMMMh`         
+         `+NMMMMd- `-/shmNNMMMMMMMMMMMMMMMMNNmhs/-` sMMMMMy.          
+           -dMMmdyymNMMMMMMMMNNmmmmmmmmNNMMMMMMMMNmyshmMd/`           
+            `+ydNMMMMMMmdhyysyso.+ds`+yysssyhdmMMMMMMmds-             
+           .omMMMMMmhysyyso+:-.` -+: `..-/+syysoydNMMMMMmo.           
+         .sNMMMMNhssys+-`                   `.:oyyoshNMMMMms.         
+       `oNMMMMmysyy/. `                        ``.+ys+ymMMMMm+`       
+      -dMMMMNyshs- ./hd-                      -hy/.`:hy+sNMMMMd-      
+     /NMMMMhohs. .smMMMN:                    :mMMMms.`:hy/hMMMMN+     
+    oMMMMNsyh- .sNMMMMMMN/                  /NMMMMMMNs.`+d+oNMMMMo    
+   oMMMMN+hs` /mMMMMMMMMMMo                oMMMMMMMMMMm/ .hs+NMMMMo   
+  /MMMMN/ds  oMMMMMMMMMMMMMs`            `sMMMMMMMMMMMMMo `yy/NMMMM/  
+ .NMMMM+hy  sMMMMMMMMMMMMMMMy`          `yMMMMMMMMMMMMMMMs `hs+MMMMN` 
+ sMMMMyod` +MMMMMMMMMMMMMMMMMd.        .dMMMMMMMMMMMMMMMMM+ .m:yMMMMs 
+`MMMMN-N- .NMMMMMMMMMMMMMMMMMMh`      `hMMMMMMMMMMMMMMMMMMN. +d.NMMMN`
+/MMMMhoh  sMMMMMMMMMMMMMMMMMN+``:oyyo:``+NMMMMMMMMMMMMMMMMMs `N:hMMMM:
+sMMMMs+:  mMMMMMMMMMMMMMMMMN- /mMMMMMMm/ -NMMMMMMMMMMMMMMMMm  /-sMMMMo
+yMMMMooy-`NNNNNNNNNNNNNNNNNs .MMMMMMMMMM. sNNNNNNNNNNNNNNNNN`+y:sMMMMy
+yMMMMo+o. `````````````````  .MMMMMMMMMM.  ````````````````` :o-sMMMMs
+oMMMMso+                      /NMMMMMMN/                      +/yMMMMo
+/MMMMd+d                       `/syys/`                      .N:dMMMM:
+`NMMMM:N:                     .s+:--:+s.                     sd-MMMMN 
+ sMMMMyom`                   -mMMMMMMMMm-                   -N-hMMMM+ 
+ `mMMMMohh`                 :NMMMMMMMMMMN:                 .m+oMMMMm` 
+  -NMMMM+hy`               +NMMMMMMMMMMMMN+               .ds+MMMMN-  
+   /MMMMNoyh.             oMMMMMMMMMMMMMMMMo             :mo+MMMMM/   
+    /NMMMMsod:          `yMMMMMMMMMMMMMMMMMMy`         `od+sMMMMN/    
+     :mMMMMdsyy-       `yMMMMMMMMMMMMMMMMMMMMy`      `/dyomMMMMm:     
+      .yMMMMMdsyy:`   `hMMMMMMMMMMMMMMMMMMMMMMh`   `/hyodMMMMMy.      
+        /dMMMMMdsyyo-``:ohmNMMMMMMMMMMMMMMNmhs:``:syssdMMMMMd/        
+         `+dMMMMMmhsyys/-..-:+osyhhhhyso+:-..-+sysoymMMMMMd+`         
+           `/hNMMMMMmhssssso+/:. :s/ `-:/+sssssshmMMMMMNh/`           
+             `-sdNMMMMMNmdhysss+-+ds.+yyssyhdmNMMMMMNdo-`             
+                `-ohmMMMMMMMMMNNmmmNNNNMMMMMMMMMNmh+-`                
+                    .:+ydmNNMMMMMMMMMMMMMMNNmhs+-`                    
+                         `.-:/+oosssooo+/:-.`                         
+                             
+                         
+----------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+                                                                      
+   /ssso.oosso+ -osso- .ssos/`+s `ss``s+  :ss` -ossso:`/sss+ +s` -s-  
+  -Nd+//`..Nd..:Ny..sM:-My-yM:/M/+NN+/M/ .mhNs `./Mo.`sM+`.: hM//sM/  
+  `:+smN: `Nd  /Mo` oM/-Mdsy+  ddNosmmd  hMshM/  :M+  hN- `. hM//sM/  
+  -yyyhs`  hy   +hyyh+ .d+     :dd``dd: :d/..yh` -d/  .shyyy`sd` /d:  
+                                                                      
+----------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+
+
+
+
+      .++/    .+++++/.  :+++++:`                                                                    
+     `dMNM/   /MNsoyNN: hMmoodMd.                                                                   
+     sMh+MN.  /MN:.+NM+ hMm.-sMN.                                                                   
+    /MMs+mMd` /MMdhhy/` hMNhhhs-                                                                    
+   .mMyooomMo /MN-``    hMd```                                                                      
+   -++`   :++ -++`      :+/    
+                                                                         
+----------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+*/
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useRef, useEffect } from 'react';
-import { Animated, Dimensions, Text, View, Pressable, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
-const SCREEN_WIDTH = Dimensions.get('screen').width
+import LapList from './components/LapList'
+import Clock from './components/Clock'
+import ControlPanel from './components/ControlPanel'
 
-const COLOR_BLUE = '#154360'
-const COLOR_WHITE = '#ddd'
+
+const COLOR_DARK = '#111'
+const COLOR_LIGHT = '#FFE400'
+
+const PAGE_GAP = 30
 
 export default function App() {
 
-  const [tenths, setTenths] = useState(0)
-  const [seconds, setSeconds] = useState(0)
-  const [minutes, setMinutes] = useState(0)
+
+  const [startTime, setStartTime] = useState(null)
+  const [stopTime, setStopTime] = useState(null)
+
+  const [millis, setMillis] = useState(0)
 
   const [laps, setLaps] = useState([])
   const [index, setIndex] = useState(0)
-  const [flatListRef, setFlatListRef] = useState(0)
 
   const [isStart, setIsStart] = useState(false)
+  const [isReset, setIsReset] = useState(false)
 
   let interval
 
-  //---------------
-  const handle_RESET = () => {
+
+  //-------------------------------------------
+  const handle_Reset = () => {
 
     setIsStart(false)
-
-    let timer = setTimeout(() => {
-      setTenths(0)
-      setSeconds(0)
-      setMinutes(0)
-      setLaps([])
-      setIndex(0)
-    }, 10)
-
+    setIsReset(true)
     console.log('::::RESET')
-    return () => clearTimeout(timer)
   }
-  //---------------
+  //-------------------------------------------
   const handle_PlayPause = () => {
 
+    if (isStart) {
+      console.log('::::PAUSE')
+    } else {
+
+      if (startTime) {
+        setStartTime(startTime + (Date.now() - stopTime))
+      } else {
+        setStartTime(Date.now())
+      }
+      console.log('::::PLAY')
+
+    }
     setIsStart(isStart => !isStart)
-    console.log(isStart ? '::::PAUSE' : '::::PLAY')
   }
-  //---------------
-  const handle_LAP = () => {
-    setLaps(() => {
+  //-------------------------------------------
+  const handle_AddLap = () => {
 
-      setIndex(index => index + 1)
-      return ([
-        ...laps,
-        {
-          id: index,
-          time: `#${(index + 1)}:  ${(minutes < 10) ? '0' + minutes : minutes}:${(seconds < 10) ? '0' + seconds : seconds},${tenths}`
-        }
-      ])
-
-    })
+    setIndex(index => index + 1)
+    setLaps([
+      ...laps,
+      {
+        id: index,
+        time: millis
+      }
+    ])
+    console.log('::::NEW LAP')
   }
 
-  //---------------
   //:::::::::::::::
-  useEffect(() => { // MILLIS INTERVAL
+  useEffect(() => {
+
     if (isStart) {
-      interval = setInterval(() => {
+      interval = setInterval(() => setMillis(Date.now() - startTime), 1)
 
-        if (tenths >= 9) {
-
-          setTenths(0)
-          setSeconds(seconds => seconds + 1)
-          if (seconds >= 59) {
-
-            setSeconds(0)
-            setMinutes(minutes => minutes + 1)
-            return () => clearInterval(interval)
-
-          }
-        } else {
-          setTenths(tenths => tenths + 1)
-        }
-        return () => clearInterval(interval)
-      }, 100)
+    } else {
+      setStopTime(Date.now())
     }
+
+    if (isReset) {
+      setStartTime(null)
+      setStopTime(null)
+      setMillis(0)
+      setIsReset(false)
+      setLaps([])
+    }
+
     return () => clearInterval(interval)
-  }, [isStart, tenths, seconds])
+  }, [isStart, isReset])
   //:::::::::::::::
-  useEffect(() => { // SCROLL
-    if (isStart) {
-
-      flatListRef.scrollToEnd({ animated: true, duration: 1000 })
-      console.log('::::SCROLL')
-    }
-  }, [index])
 
   return (
     <View style={[
-      { width: SCREEN_WIDTH, flex: 1 },
-      { justifyContent: 'flex-start', alignItems: 'center' },
-      { backgroundColor: COLOR_BLUE },
+      { flex: 1, backgroundColor: COLOR_DARK, },
+      { alignItems: 'center', justifyContent: 'center', },
+      { paddingTop: PAGE_GAP },
     ]}>
 
 
-      {/* LAP_VIEW________________________________________________________________________ */}
-      <ScrollView ref={(ref) => setFlatListRef(ref)}
-        contentContainerStyle={[
-          { justifyContent: 'flex-end', alignItems: 'center', },
-          { flexGrow: 1 }
-        ]}>
+      <LapList laps={laps} index={index} isStart={isStart} />
 
-        {
-          laps.map((item, index) => {
-            return (
-              <View key={index} style={[
-                { width: SCREEN_WIDTH, height: 50 },
-                { justifyContent: 'center', alignItems: 'center' },
-                { backgroundColor: (index % 2) ? COLOR_BLUE : COLOR_WHITE },
-              ]} >
+      <Clock millis={millis} />
 
-                <Text style={[
-                  { color: (index % 2) ? COLOR_WHITE : COLOR_BLUE },
-                  { fontWeight: 'bold', fontSize: 20 }
-                ]}>
-
-                  {item.time}
-                </Text>
-              </View>
-            )
-          })
-        }
-
-      </ScrollView>
-
-
-      {/* BUTTONS_________________________________________________________________________ */}
-      <View style={[
-        { width: SCREEN_WIDTH },
-        { justifyContent: 'space-evenly', alignItems: 'center' },
-        { flexDirection: 'row' },
-        { paddingVertical: 30 }
-      ]} >
-
-        <Pressable
-          onPress={() => (isStart || tenths != 0 || seconds != 0 || minutes != 0) ? handle_RESET() : null}
-          style={[
-            { width: 75, height: 75 },
-            { justifyContent: 'center', alignItems: 'center' },
-            { backgroundColor: (isStart || tenths != 0 || seconds != 0 || minutes != 0) ? COLOR_WHITE : COLOR_BLUE, borderRadius: 75 }
-          ]} >
-
-          <Text style={{ color: COLOR_BLUE, fontWeight: 'bold', fontSize: 20 }}>reset</Text>
-        </Pressable>
-
-        <Pressable
-          onPress={() => handle_PlayPause()}
-          style={[
-            { width: 75, height: 75 },
-            { justifyContent: 'center', alignItems: 'center' },
-            { backgroundColor: COLOR_WHITE, borderRadius: 75 }
-          ]} >
-
-          <Text style={{ color: COLOR_BLUE, fontWeight: 'bold', fontSize: 20 }}>{isStart ? 'pause' : 'play'}</Text>
-        </Pressable>
-
-        <Pressable
-          onPress={() => isStart ? handle_LAP() : null}
-          style={[
-            { width: 75, height: 75 },
-            { justifyContent: 'center', alignItems: 'center' },
-            { backgroundColor: isStart ? COLOR_WHITE : COLOR_BLUE, borderRadius: 75 }
-          ]} >
-
-          <Text style={{ color: COLOR_BLUE, fontWeight: 'bold', fontSize: 20 }}>lap</Text>
-        </Pressable>
-
-      </View>
-
-
-      {/* CLOCK___________________________________________________________________________ */}
-      <View style={[
-        { width: SCREEN_WIDTH },
-        { backgroundColor: '#154360dd' },
-        { position: 'absolute', top: 0, left: 0, right: 0 },
-        { justifyContent: 'center', alignItems: 'center' },
-        { paddingVertical: 34 }
-      ]}>
-
-        <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 40 }} >S T O P W A T C H</Text>
-
-        <View style={[
-          { width: SCREEN_WIDTH },
-          { justifyContent: 'center', alignItems: 'center' },
-          { flexDirection: 'row' }
-        ]}>
-
-          <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 30 }}
-          >{`${(minutes < 10) ? '0' + minutes : minutes} : `}</Text>
-
-          <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 80 }}
-          >{`${(seconds < 10) ? '0' + seconds : seconds}`}</Text>
-
-          <Text style={{ color: COLOR_WHITE, fontWeight: 'bold', fontSize: 30 }}
-          >{` : ${tenths}`}</Text>
-
-        </View>
-      </View>
+      <ControlPanel
+        millis={millis}
+        isStart={isStart}
+        onPressReset={() => (millis != 0) ? handle_Reset() : null}
+        onPressPlayPause={() => handle_PlayPause()}
+        onPressAddLap={() => isStart ? handle_AddLap() : null}
+      />
 
 
       <StatusBar style='inverted' />
-    </View >
-  )
+    </View>
+  );
 }
 
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+    backgroundColor: COLOR_DARK,
+    alignItems: 'center', justifyContent: 'center',
+    paddingTop: PAGE_GAP
+  },
+
+});
