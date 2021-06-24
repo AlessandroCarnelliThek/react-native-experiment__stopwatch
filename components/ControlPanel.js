@@ -1,88 +1,62 @@
 /*
+                                       ```                                                          
+    ohs                       .hh:     yh+         .ss`                                             
+    yMd     .ssyys/  :so+syo. -NM/     oy/ `/ssss:.yMNso.                                           
+    yMd     .++oyMM: oMm::hMd`-NM/     dMo sMmo++/`oMN/:`                                           
+    yMd`    smd++NM/ oMd  oMm`-NM/     dMo -oyhmNy :MN.                                             
+    yNNdhhh-sNmssmN/ oMNshmd/ .mNdhhhy hNo shyydms .mNhy.                                           
+    .......` .-.`..` oMd.-.`   ....... ..` `.--..   `.-.                                            
+                     -+/                                      
+
+--------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
 
 
-CONTROL PANEL
-
-                                                                         
-----------------------------------------------------------------------
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-*/
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Pressable, Dimensions, Text, View } from 'react-native';
-
-const SCREEN_WIDTH = Dimensions.get('screen').width
-
-const COLOR_DARK = '#111'
-const COLOR_LIGHT = '#FFE400'
-
-
+import React from 'react';
+import { StyleSheet, Pressable, Text, View } from 'react-native';
+//-------------------------------------------
 const GAP = 30
-const PAGE_GAP = 30
 
-//magic function
-const msToTime = (s) => {
 
-    // Pad to 2 or 3 digits, default is 2
-    function pad(n, z) {
-        z = z || 2;
-        return ('00' + n).slice(-z);
-    }
+/*--------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
 
-    var ms = s % 1000;
-    s = (s - ms) / 1000;
-    var secs = s % 60;
-    s = (s - secs) / 60;
-    var mins = s % 60;
-    // var hrs = (s - mins) / 60;
 
-    return pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
-    // return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
-}
-
-const ControlPanel = React.memo(({ millis, isStart, onPressReset, onPressPlayPause, onPressAddLap }) => {
-
+const ControlPanel = ({ color_light, color_dark, millis, isStart, onPressReset, onPressPlayPause, onPressAddLap }) => {
     return (
         <View style={styles.controlPanel}>
 
             <Pressable style={[
                 styles.btn,
-                { backgroundColor: (millis != 0) ? COLOR_LIGHT : COLOR_DARK, },
-            ]} onPress={onPressReset} >
-                <Text style={styles.btn_text}>{(millis != 0) ? 'RESET' : ''}</Text>
+                { backgroundColor: (millis != 0) ? color_light : color_dark, },
+            ]} onPressIn={onPressReset} >
+                <Text style={{ color: color_dark, fontWeight: 'bold', fontSize: 20 }}>{(millis != 0) ? 'RESET' : ''}</Text>
             </Pressable>
 
             <Pressable style={[
                 styles.btn,
-                { backgroundColor: COLOR_LIGHT },
-            ]} onPress={onPressPlayPause} >
-                <Text style={styles.btn_text}>{isStart ? 'PAUSE' : 'PLAY'}</Text>
+                { backgroundColor: color_light },
+            ]} onPressIn={onPressPlayPause} >
+                <Text style={{ color: color_dark, fontWeight: 'bold', fontSize: 20 }}>{isStart ? 'PAUSE' : 'PLAY'}</Text>
             </Pressable>
 
-            <Pressable onPress={onPressAddLap}
+            <Pressable onPressIn={onPressAddLap}
                 style={[
                     styles.btn,
-                    { backgroundColor: isStart ? COLOR_LIGHT : COLOR_DARK },
+                    { backgroundColor: isStart ? color_light : color_dark },
                 ]} >
-                <Text style={styles.btn_text}>{isStart ? 'LAP' : ''}</Text>
+                <Text style={{ color: color_dark, fontWeight: 'bold', fontSize: 20 }}>{isStart ? 'LAP' : ''}</Text>
             </Pressable>
 
         </View>
-
     )
-})
+}
+
 export default ControlPanel
 
 
 const styles = StyleSheet.create({
-    page: {
-        flex: 1,
-        backgroundColor: COLOR_DARK,
-        alignItems: 'center', justifyContent: 'center',
-        paddingTop: PAGE_GAP
-    },
-    clock: {
-        color: COLOR_LIGHT, fontWeight: '100', fontSize: 60
-    },
+
     controlPanel: {
         flexDirection: 'row',
         paddingVertical: GAP,
@@ -93,9 +67,5 @@ const styles = StyleSheet.create({
 
         marginHorizontal: 5
     },
-    btn_text: {
-        color: COLOR_DARK,
-        fontWeight: 'bold',
-        fontSize: 20,
-    }
+
 });

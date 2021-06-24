@@ -55,37 +55,26 @@ MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
   -yyyhs`  hy   +hyyh+ .d+     :dd``dd: :d/..yh` -d/  .shyyy`sd` /d:  
                                                                       
 ----------------------------------------------------------------------
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
 
 
-
-
-
-      .++/    .+++++/.  :+++++:`                                                                    
-     `dMNM/   /MNsoyNN: hMmoodMd.                                                                   
-     sMh+MN.  /MN:.+NM+ hMm.-sMN.                                                                   
-    /MMs+mMd` /MMdhhy/` hMNhhhs-                                                                    
-   .mMyooomMo /MN-``    hMd```                                                                      
-   -++`   :++ -++`      :+/    
-                                                                         
-----------------------------------------------------------------------
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-*/
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-
+//-------------------------------------------
+import Page from './components/Page'
 import LapList from './components/LapList'
 import Clock from './components/Clock'
 import ControlPanel from './components/ControlPanel'
-
-
+//-------------------------------------------
 const COLOR_DARK = '#111'
 const COLOR_LIGHT = '#FFE400'
 
-const PAGE_GAP = 30
 
-export default function App() {
+/*--------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
+
+
+const App = () => {
 
 
   const [startTime, setStartTime] = useState(null)
@@ -140,6 +129,7 @@ export default function App() {
     console.log('::::NEW LAP')
   }
 
+
   //:::::::::::::::
   useEffect(() => {
 
@@ -162,19 +152,25 @@ export default function App() {
   }, [isStart, isReset])
   //:::::::::::::::
 
+
   return (
-    <View style={[
-      { flex: 1, backgroundColor: COLOR_DARK, },
-      { alignItems: 'center', justifyContent: 'center', },
-      { paddingTop: PAGE_GAP },
-    ]}>
+    <Page color={COLOR_DARK} >
 
 
-      <LapList laps={laps} index={index} isStart={isStart} />
+      <LapList
+        laps={laps}
+        index={index}
+        isStart={isStart}
+      />
 
-      <Clock millis={millis} />
+      <Clock
+        color={COLOR_LIGHT}
+        millis={millis}
+      />
 
       <ControlPanel
+        color_light={COLOR_LIGHT}
+        color_dark={COLOR_DARK}
         millis={millis}
         isStart={isStart}
         onPressReset={() => (millis != 0) ? handle_Reset() : null}
@@ -184,16 +180,7 @@ export default function App() {
 
 
       <StatusBar style='inverted' />
-    </View>
+    </Page>
   );
 }
-
-const styles = StyleSheet.create({
-  page: {
-    flex: 1,
-    backgroundColor: COLOR_DARK,
-    alignItems: 'center', justifyContent: 'center',
-    paddingTop: PAGE_GAP
-  },
-
-});
+export default App

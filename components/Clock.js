@@ -1,25 +1,24 @@
 /*
 
+      `````  `--                   .-`                                                              
+    .sdNmmmd`-MN.    ``       ``   dMo                                                              
+   `dMh.  `/`-MN. -ydddh+` .shddh+ dMo`+dy.                                                         
+   -MM+      -MN..NM+ `mMs`mMs``.- dMhdMy`                                                          
+   `dMd:``-o`-MN..NM/ `dMs`NMo` `- dMdsMm-                                                          
+    `+hmmmdy`-md. :ymdmdo` -yddddo hm+ /dd:    
 
-CLOCK
+    
+--------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
 
-                                                                         
-----------------------------------------------------------------------
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-*/
-import React, { useEffect, useState } from 'react';
-import { Dimensions, Text, View, ScrollView } from 'react-native';
 
+import React from 'react';
+import { Dimensions, Text, View } from 'react-native';
+//-------------------------------------------
 const SCREEN_WIDTH = Dimensions.get('screen').width
-
-const COLOR_DARK = '#111'
-const COLOR_LIGHT = '#FFE400'
-
-
+//-------------------------------------------
 const GAP = 30
-const PAGE_GAP = 30
-
-//magic function
+//-------------------------------------------
 const msToTime = (s) => {
 
     // Pad to 2 or 3 digits, default is 2
@@ -39,7 +38,12 @@ const msToTime = (s) => {
     // return pad(hrs) + ':' + pad(mins) + ':' + pad(secs) + '.' + pad(ms, 3);
 }
 
-const Clock = React.memo(({ millis }) => {
+
+/*--------------------------------------------------------------------
+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM*/
+
+
+const Clock = ({ color, millis }) => {
 
     return (
         <View style={[
@@ -50,11 +54,11 @@ const Clock = React.memo(({ millis }) => {
             { position: 'absolute', top: 0, left: 0, right: 0 }
         ]}>
             <Text style={[
-                { color: COLOR_LIGHT, fontWeight: '100', fontSize: 60 }
+                { color: color, fontWeight: '100', fontSize: 60 }
             ]}>
                 {msToTime(millis)}
             </Text>
         </View>
     )
-})
+}
 export default Clock
